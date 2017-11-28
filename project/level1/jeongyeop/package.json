@@ -1,0 +1,15 @@
+{
+  "name": "jeongyeop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build; node ./dist/lotto.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^8.0.53"
+  }
+}
