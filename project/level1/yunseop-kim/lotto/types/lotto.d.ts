@@ -1,0 +1,1 @@
+export interface lottoNumber { lottoNumbers: number[], bonusNumber: number }

@@ -1,0 +1,1 @@
+export type LOTTO_NUMBER = number[];

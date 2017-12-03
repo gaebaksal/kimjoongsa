@@ -1,0 +1,23 @@
+{
+  "name": "yeolwoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build; jasmine",
+    "start": "npm run build; node ./dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jasmine": "^2.8.2",
+    "@types/node": "^8.0.53",
+    "install": "^0.10.2"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0",
+    "mocha": "^4.0.1"
+  }
+}
