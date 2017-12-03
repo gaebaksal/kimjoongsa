@@ -2,18 +2,11 @@ import { LOTTO_NUMBER } from './types/lotto.types';
 import rl from './readline';
 
 export class Lotto {
-  private lottoSize: number;
   private lottoNumbers: LOTTO_NUMBER;
-  private winningCnt: number;
-  private bonusCnt: number;
   private winningNumbers: LOTTO_NUMBER;
   private bonusNumbers: LOTTO_NUMBER;
 
-  constructor(size, winningCnt: number = 6, bonusCnt: number = 1) {
-    this.lottoSize = size;
-    this.winningCnt = winningCnt;
-    this.bonusCnt = bonusCnt;   
-  }
+  constructor(private lottoSize, private winningCnt: number = 6, private bonusCnt: number = 1) {}
 
   initialize() {
     this.initialzeLottoNumbers();
@@ -40,7 +33,7 @@ export class Lotto {
     return this.generator(this.winningCnt);
   }
 
-  async manualGenerator(): Promise<LOTTO_NUMBER> {
+  manualGenerator(): Promise<LOTTO_NUMBER> {
     return new Promise<LOTTO_NUMBER>(resolve => {
       rl.question('입력해주세요. ex) 15 24 1 34 29 42 \n', (answer: string) => {
         const splitString: LOTTO_NUMBER = answer.split(' ').map((val: string) => isNaN(Number(val)) ? 0 : Number(val));
@@ -78,6 +71,31 @@ export class Lotto {
     return rank;
   }
 
+  run(): void {
+    rl.question('1. 자동, 2. 수동 \n', async (answer: string) => {
+      let purchasedNumber: LOTTO_NUMBER;
+
+      if (answer === '1') {
+        purchasedNumber = this.autoGenerator();
+      } else if (answer === '2') {
+        purchasedNumber = await this.manualGenerator();
+      }
+
+      console.log(`내가 구매한 번호는 ${purchasedNumber.join(', ')} 입니다.`);
+      console.log(`당첨 번호는: ${this.getWinningNumbers().join(', ')} + ${this.getBonusNumbers()} 입니다.`);
+
+      const rank = this.checkResult(purchasedNumber);
+
+      if (rank) {
+        console.log(`축하합니다. ${rank}등에 당첨 되셨습니다!`);
+      } else {
+        console.log('아쉽지만 당첨되지 못했습니다.');
+      }
+
+      rl.close();
+    });
+  }
+  
   getWinningNumbers(): LOTTO_NUMBER {
     return this.winningNumbers;
   }
