@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,   // 파일을 저장하면 자동으로 컴파일 할 것인지 여부, 특정 IDE에서 동작
+  "compilerOptions": {
+    "target": "es6",    // 어떤 js 형태로 컴파일 할 것인가?
+    "module": "commonjs",       // 어떤 모듈을 표준으로 사용할 것인가?
+    "outDir": "./dist",
+    "rootDir": "src",
+    "declaration": true,
+    "sourceMap": true,      //  코드 난독화로 인해 디버깅이 어려워지는데, 원본 코드에 대한 소스맵을 생성할 것인지 여부
+    "moduleResolution": "node"       // commonjs라면 node
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
