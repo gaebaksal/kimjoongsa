@@ -4,6 +4,6 @@ import rl from './readline';
 
 const l = new Lotto(45);
 
-l.initialize();
+l.initializeWinningNumber();
 l.run();
 
