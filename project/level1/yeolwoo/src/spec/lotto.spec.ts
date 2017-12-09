@@ -1,7 +1,5 @@
 
 import { Lotto } from '../lotto';
-import { win32 } from 'path';
-import { exec } from 'child_process';
 
 describe('Lotto', () => {
   let l: Lotto;
@@ -14,9 +12,13 @@ describe('Lotto', () => {
     
     expect(l).toBeDefined();
     
-    l.initialize();
+    l.initializeWinningNumber();
+
+    // set winningNumber
     winningNumbers = l.getWinningNumbers();
     bonusNumbers = l.getBonusNumbers();
+
+    // purchase lotto
     purchaseNumbers = [...winningNumbers];
 
     expect(typeof(winningNumbers[0])).toEqual('number');
@@ -25,6 +27,7 @@ describe('Lotto', () => {
 
   it('1st prize', () => {
     const rank: number = l.checkResult(purchaseNumbers);
+    
     expect(rank).toBe(1);
   });
 

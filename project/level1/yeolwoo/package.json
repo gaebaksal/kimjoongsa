@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "test": "npm run build; jasmine",
-    "start": "npm run build; node ./dist/app.js"
+    "start": "npm run build; node ./dist/app.js",
+    "cov": "npm run build; nyc jasmine"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +15,14 @@
   "dependencies": {
     "@types/jasmine": "^2.8.2",
     "@types/node": "^8.0.53",
-    "install": "^0.10.2"
+    "install": "^0.10.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.6.2"
   },
   "devDependencies": {
     "jasmine": "^2.8.0",
-    "mocha": "^4.0.1"
+    "jasmine-reporters": "^2.2.1",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0"
   }
 }
